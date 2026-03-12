@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience - Yuxiang Sun</title>
+    <title>Publications & Projects - Yuxiang Sun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; margin: 0; padding: 0; background-color: #fff; }
@@ -24,20 +24,23 @@
         .content-section { padding-bottom: 40px; }
         .content-section h1 { font-size: 2rem; margin-top: 0; margin-bottom: 20px; color: #222; border-bottom: 2px solid #eaeaea; padding-bottom: 10px; }
         
-        /* 经历区块样式 */
-        .item-block { margin-bottom: 35px; }
+        /* 列表项结构 (用于经历和项目) */
+        .item-block { margin-bottom: 30px; }
         .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
-        .item-title { font-weight: bold; font-size: 1.15rem; color: #111; }
-        .item-date { color: #666; font-size: 0.95rem; white-space: nowrap; }
-        .item-subtitle { font-style: normal; color: #444; margin-bottom: 10px; font-size: 1.05rem; }
-        .item-block ul { margin-top: 5px; padding-left: 20px; }
-        .item-block li { margin-bottom: 6px; }
+        .item-title { font-weight: bold; font-size: 1.1rem; }
+        .item-date { color: #666; font-size: 0.95rem; }
+        .item-subtitle { font-family: monospace; color: #666; margin-bottom: 10px; background: #f4f4f4; padding: 2px 6px; border-radius: 3px; display: inline-block; }
+        
+        /* 论文特有样式 */
+        .paper-authors { font-size: 1rem; margin-bottom: 5px; }
+        .paper-venue { font-style: italic; color: #555; margin-bottom: 8px; }
+        .paper-links a { margin-right: 15px; font-weight: 500; font-size: 0.95rem; }
+        .paper-links i { margin-right: 5px; }
 
         @media (max-width: 768px) {
             .container { flex-direction: column; }
             .sidebar { position: static; flex: 1 1 auto; max-width: 300px; margin: 0 auto; }
             .navbar { flex-wrap: wrap; padding: 20px; }
-            .item-header { flex-direction: column; }
         }
     </style>
 </head>
@@ -45,8 +48,8 @@
 
     <nav class="navbar">
         <a href="index.html">Homepage</a>
-        <a href="projects.html">Publications / Projects</a>
-        <a href="experience.html" class="active">Experience</a>
+        <a href="projects.html" class="active">Publications / Projects</a>
+        <a href="experience.html">Experience</a>
         <a href="courses.html">Courses</a>
         <a href="Yuxiang_Sun_Resume.pdf" target="_blank">CV</a>
     </nav>
@@ -69,37 +72,48 @@
         </div>
 
         <div class="main-content">
-            
             <div class="content-section">
-                <h1>Research Experience</h1>
+                <h1>Publications</h1>
+                
+                <div class="item-block">
+                    <div class="item-title">Intellectual Property in Graph-Based Machine Learning as a Service: Attacks and Defenses</div>
+                    <div class="paper-authors">Lincan Li, Bolin Shen, Chenxi Zhao, <strong>Yuxiang Sun</strong>, Kaixiang Zhao, Shirui Pan, Yushun Dong</div>
+                    <div class="paper-venue">Under review at ACM Computing Surveys, 2025</div>
+                    <div class="paper-links">
+                        <a href="https://arxiv.org/abs/2508.19641v1" target="_blank"><i class="fas fa-file-alt"></i>arXiv</a>
+                        <a href="https://github.com/LabRAI/PyGIP" target="_blank"><i class="fab fa-github"></i>Code (PyGIP)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h1>Selected Projects</h1>
                 
                 <div class="item-block">
                     <div class="item-header">
-                        <div class="item-title">Research Assistant</div>
-                        <div class="item-date">Jun 2025 – Dec 2025</div>
+                        <div class="item-title">MadLang Interpreter and Compiler</div>
                     </div>
-                    <div class="item-subtitle">Prof. Remzi Arpaci-Dusseau's Group, University of Wisconsin-Madison</div>
+                    <div class="item-subtitle">Java</div>
                     <ul>
-                        <li>Reproduced more than 50 semantic bugs and tested the severity of each semantical bug about scheduler from Linux, Kubernetes and Volcano.</li>
-                        <li>Classified these bugs based on 6 different criteria: special input, source of violation, root cause, influenced decision, how the bug is found, and after fix.</li>
-                        <li>Co-developing a bug testing tool.</li>
+                        <li>Designed and implemented an interpreter for the "MadLang" programming language from scratch.</li>
+                        <li>Handled core compiler construction components including lexical analysis, Abstract Syntax Tree (AST) construction, and environment mapping.</li>
+                        <li>Implemented complex language features such as function call mechanics and variable scopes.</li>
                     </ul>
                 </div>
 
                 <div class="item-block">
                     <div class="item-header">
-                        <div class="item-title">Research Assistant</div>
-                        <div class="item-date">Jun 2024 – Aug 2025</div>
+                        <div class="item-title">Formal Verification and Computation Theory</div>
                     </div>
-                    <div class="item-subtitle">Prof. Yushun Dong's Group, Florida State University</div>
+                    <div class="item-subtitle">Coq | Lean | Haskell</div>
                     <ul>
-                        <li>Contributed as a principal contributor and maintainer to the PyGIP library, which consolidates code and datasets from research papers on GNN model extraction attacks and defenses.</li>
-                        <li>Developed the defense framework and implemented 2 model extraction defense algorithms and 8 model extraction attack algorithms into library, enabling users to select attack models from one paper to test against defense models from another. This allows for flexible and comprehensive benchmarking of GNN security methods.</li>
-                        <li>Co-authored the PyGIP 1.0.0 documentation, a comprehensive guide for users on installation, API reference, and usage of the library.</li>
+                        <li>Explored interactive theorem proving and mathematical formalization using Coq and Lean.</li>
+                        <li>Investigated functional programming paradigms, including the implementation of parser combinators using Haskell.</li>
+                        <li>Analyzed theoretical models of computation and applied formal logic to verify software correctness.</li>
                     </ul>
                 </div>
-
             </div>
+            
         </div>
     </div>
 
