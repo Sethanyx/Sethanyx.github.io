@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        a { color: #2a7b9b; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* 顶部导航栏 */
+        .navbar {
+            display: flex;
+            justify-content: flex-start;
+            padding: 20px 50px;
+            border-bottom: 1px solid #eaeaea;
+            gap: 30px;
+            font-size: 1.1rem;
+            color: #666;
+        }
+        .navbar a { color: #666; font-weight: 500; }
+        .navbar a.active { color: #333; font-weight: bold; }
+
+        /* 主体内容容器 */
+        .container {
+            display: flex;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            gap: 50px; /* 左右两栏的间距 */
+        }
+
+        /* 左侧边栏 */
+        .sidebar {
+            flex: 0 0 220px; /* 固定宽度 */
+        }
+        .sidebar img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .sidebar h2 {
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            color: #222;
+        }
+        .sidebar .title {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .contact-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-list i {
+            width: 20px;
+            color: #555;
+            text-align: center;
+            margin-right: 8px;
+        }
+
+        /* 右侧主要内容区 */
+        .main-content {
+            flex: 1;
+        }
+        .main-content h1 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        .main-content p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        
+        /* 突出显示的红色段落（模仿原图的 recruiting 部分） */
+        .highlight-text {
+            color: #c00000;
+            font-weight: bold;
+        }
+        .highlight-box {
+            background-color: #fcfcfc;
+            border-left: 4px solid #c00000;
+            padding: 10px 15px;
+            margin: 20px 0;
+        }
+
+        /* 研究方向列表 */
+        .research-list {
+            padding-left: 20px;
+        }
+        .research-list li {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        /* 响应式设计：在手机上自动变成上下堆叠排列 */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .sidebar { flex: 1 1 auto; max-width: 300px; margin: 0 auto; }
+            .navbar { flex-wrap: wrap; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="active">Homepage</a>
+        <a href="#">Publications / Projects</a>
+        <a href="#">Experience</a>
+        <a href="#">CV</a>
+    </nav>
+
+    <div class="container">
+        <div class="sidebar">
+            <img src="https://via.placeholder.com/220x220?text=Your+Photo" alt="Profile Photo">
+            <h2>Your Name</h2>
+            <div class="title">
+                B.S. Student in CS & Math<br>
+                University of Wisconsin-Madison<br>
+            </div>
+            <ul class="contact-list">
+                <li><i class="fas fa-map-marker-alt"></i> Madison, WI</li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:your.email@wisc.edu">Email</a></li>
+                <li><i class="fab fa-linkedin"></i> <a href="#">LinkedIn</a></li>
+                <li><i class="fab fa-github"></i> <a href="#">GitHub</a></li>
+                <li><i class="fas fa-file-pdf"></i> <a href="#">Resume / CV</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <h1>About</h1>
+            <p>I am an undergraduate student at the <a href="https://www.cs.wisc.edu/">Department of Computer Sciences</a> at <a href="https://www.wisc.edu/">University of Wisconsin-Madison</a>, pursuing a double major in Computer Science and Mathematics. My long-term goal is to pursue a career in the tech industry with strong interests in entrepreneurship and advanced engineering.</p>
+            
+            <div class="highlight-box">
+                <p><span class="highlight-text">[Prospective PhD Student]:</span> I am actively seeking PhD programs and research internship opportunities starting in Fall 2027. If our research interests align, please feel free to <a href="mailto:your.email@wisc.edu">email me</a> with my CV attached.</p>
+            </div>
+
+            <p><strong>Research & Engineering Summary:</strong> My primary interests lie in the intersection of theory and system implementation, with a specific focus on ensuring software correctness and building efficient computing infrastructures. I have hands-on experience developing language tools and formalizing mathematical proofs. My current focus areas include:</p>
+
+            <ul class="research-list">
+                <li><strong>Programming Language Theory & Compilers:</strong> Developing interpreters and compilers (e.g., MadLang project in Java), handling lexical analysis, AST construction, and environment mapping.</li>
+                <li><strong>Formal Verification:</strong> Applying interactive theorem provers (Coq, Lean) to verify software correctness and explore the theory of computation.</li>
+                <li><strong>Quantum Computing & Cryptography:</strong> [在这里补充一句你在这个方向的具体兴趣或做过的项目摘要]</li>
+                <li><strong>Functional Programming:</strong> Utilizing languages like Haskell for parser combinators and theoretical implementations.</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
