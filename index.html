@@ -6,9 +6,9 @@
     <title>Yuxiang Sun - Homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 全局样式 */
+        /* 开启平滑滚动核心代码 */
         html {
-            scroll-behavior: smooth; /* 点击导航栏时平滑滚动 */
+            scroll-behavior: smooth;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -31,7 +31,7 @@
             gap: 30px;
             font-size: 1.1rem;
             color: #666;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.95); /* 微微透明的白色背景 */
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -48,55 +48,36 @@
             gap: 50px; 
         }
 
-        /* 左侧边栏 */
+        /* 左侧边栏 (固定在屏幕左侧) */
         .sidebar {
             flex: 0 0 220px; 
+            position: sticky;
+            top: 100px; /* 距离顶部的距离 */
+            height: fit-content;
         }
         .sidebar img {
             width: 100%;
             height: auto;
             border-radius: 4px;
             margin-bottom: 15px;
-            border: 1px solid #eee; /* 给照片加个细边框 */
+            border: 1px solid #eee;
         }
-        .sidebar h2 {
-            font-size: 1.4rem;
-            margin: 0 0 10px 0;
-            color: #222;
-        }
-        .sidebar .title {
-            font-size: 0.95rem;
-            color: #555;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-        .contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 0.9rem;
-        }
-        .contact-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-        .contact-list i {
-            width: 20px;
-            color: #555;
-            text-align: center;
-            margin-right: 8px;
-        }
+        .sidebar h2 { font-size: 1.4rem; margin: 0 0 10px 0; color: #222; }
+        .sidebar .title { font-size: 0.95rem; color: #555; margin-bottom: 20px; line-height: 1.4; }
+        .contact-list { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+        .contact-list li { margin-bottom: 12px; display: flex; align-items: center; }
+        .contact-list i { width: 20px; color: #555; text-align: center; margin-right: 8px; }
 
         /* 右侧主要内容区 */
         .main-content {
             flex: 1;
         }
         
-        /* 区块样式 */
+        /* 区块样式设置：强制撑开高度以便测试滚动，设置 scroll-margin-top 防止导航栏遮挡标题 */
         .content-section {
-            margin-bottom: 50px;
-            scroll-margin-top: 80px; /* 防止导航栏遮挡标题 */
+            min-height: 80vh; /* 强制每个区块至少占屏幕 80% 的高度，确保能滚动 */
+            padding-bottom: 40px;
+            scroll-margin-top: 80px; 
         }
         .content-section h1 {
             font-size: 2rem;
@@ -108,44 +89,20 @@
         }
 
         /* 列表项结构 (用于经历和项目) */
-        .item-block {
-            margin-bottom: 25px;
-        }
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 5px;
-        }
-        .item-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        .item-date {
-            color: #666;
-            font-size: 0.95rem;
-        }
-        .item-subtitle {
-            font-style: italic;
-            color: #555;
-            margin-bottom: 10px;
-        }
+        .item-block { margin-bottom: 25px; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+        .item-title { font-weight: bold; font-size: 1.1rem; }
+        .item-date { color: #666; font-size: 0.95rem; }
+        .item-subtitle { font-family: monospace; color: #666; margin-bottom: 10px; background: #f4f4f4; padding: 2px 6px; border-radius: 3px; display: inline-block; }
 
-        .highlight-text {
-            color: #c00000;
-            font-weight: bold;
-        }
-        .highlight-box {
-            background-color: #fcfcfc;
-            border-left: 4px solid #c00000;
-            padding: 10px 15px;
-            margin: 20px 0;
-        }
+        .highlight-text { color: #c00000; font-weight: bold; }
+        .highlight-box { background-color: #fcfcfc; border-left: 4px solid #c00000; padding: 10px 15px; margin: 20px 0; }
 
         @media (max-width: 768px) {
             .container { flex-direction: column; }
-            .sidebar { flex: 1 1 auto; max-width: 300px; margin: 0 auto; }
+            .sidebar { position: static; flex: 1 1 auto; max-width: 300px; margin: 0 auto; }
             .navbar { flex-wrap: wrap; padding: 20px; }
+            .content-section { min-height: auto; } /* 手机端取消强制高度 */
         }
     </style>
 </head>
@@ -179,13 +136,20 @@
             
             <div id="about" class="content-section">
                 <h1>About</h1>
-                <p>I am an undergraduate student at the <a href="https://www.cs.wisc.edu/">Department of Computer Sciences</a> at <a href="https://www.wisc.edu/">University of Wisconsin-Madison</a>, pursuing a double major in Computer Science and Mathematics. My long-term goal is to pursue a career in the tech industry with strong interests in entrepreneurship and advanced engineering.</p>
+                <p>I am an undergraduate student at the <a href="https://www.cs.wisc.edu/">Department of Computer Sciences</a> at <a href="https://www.wisc.edu/">University of Wisconsin-Madison</a>, pursuing a double major in Computer Science and Mathematics.</p>
+                <p>My long-term goal is to pursue a career in the tech industry, with strong interests in entrepreneurship and engineering robust computing infrastructures. I am actively seeking PhD programs and research opportunities starting after graduation, considering programs in the US, UK, and Singapore.</p>
                 
                 <div class="highlight-box">
-                    <p><span class="highlight-text">[Prospective PhD Student]:</span> I am actively seeking PhD programs and research internship opportunities. If our research interests align, please feel free to <a href="mailto:sun469@wisc.edu">email me</a>.</p>
+                    <p><span class="highlight-text">[Prospective PhD Student]:</span> If our research interests align, please feel free to <a href="mailto:sun469@wisc.edu">email me</a>.</p>
                 </div>
 
-                <p><strong>Research Interests:</strong> My primary interests lie in Formal Verification, Programming Language Theory, Compilers, and Quantum Computing. I am particularly interested in the intersection of mathematical theory and system implementation.</p>
+                <p><strong>Research Interests:</strong> My primary interests lie in the intersection of theory and system implementation. Specifically:</p>
+                <ul>
+                    <li>Formal Verification</li>
+                    <li>Programming Language Theory & Compilers</li>
+                    <li>Theory of Computation</li>
+                    <li>Quantum Computing & Cryptography</li>
+                </ul>
             </div>
 
             <div id="projects" class="content-section">
@@ -194,48 +158,41 @@
                 <div class="item-block">
                     <div class="item-header">
                         <div class="item-title">MadLang Interpreter and Compiler</div>
+                        <div class="item-date">Present</div>
                     </div>
-                    <div class="item-subtitle">Java | <a href="https://github.com/Sethanyx/[填写具体仓库名]" target="_blank">[GitHub Code]</a></div>
+                    <div class="item-subtitle">Java</div>
                     <ul>
-                        <li>[在此填写具体细节，例如：Designed and implemented a programming language interpreter...]</li>
-                        <li>[在此填写具体细节，例如：Handled lexical analysis, AST construction, and environment mapping...]</li>
+                        <li>Designed and implemented an interpreter for the "MadLang" programming language from scratch.</li>
+                        <li>Handled core compiler construction components including lexical analysis, Abstract Syntax Tree (AST) construction, and environment mapping.</li>
+                        <li>Implemented complex language features such as function call mechanics and variable scopes.</li>
                     </ul>
                 </div>
 
                 <div class="item-block">
                     <div class="item-header">
-                        <div class="item-title">Theory of Computation / Formal Verification Project</div>
+                        <div class="item-title">Formal Verification and Computation Theory</div>
+                        <div class="item-date">Recent</div>
                     </div>
-                    <div class="item-subtitle">Coq / Lean / Haskell</div>
+                    <div class="item-subtitle">Coq | Lean | Haskell</div>
                     <ul>
-                        <li>[在此填写具体细节，例如：Applied interactive theorem provers to verify...]</li>
+                        <li>Explored interactive theorem proving and mathematical formalization using Coq and Lean.</li>
+                        <li>Investigated functional programming paradigms, including the implementation of parser combinators using Haskell.</li>
+                        <li>Analyzed theoretical models of computation and applied formal logic to verify software correctness.</li>
                     </ul>
                 </div>
             </div>
 
-            <div id="experience" class="content-section">
+            <div id="experience" class="content-section" style="min-height: 100vh;">
                 <h1>Experience</h1>
                 
                 <div class="item-block">
                     <div class="item-header">
-                        <div class="item-title">Undergraduate Research Assistant (或者其他职位)</div>
-                        <div class="item-date">Month Year – Present</div>
+                        <div class="item-title">Independent Researcher & Developer</div>
+                        <div class="item-date">2026 – Present</div>
                     </div>
-                    <div class="item-subtitle">University of Wisconsin-Madison | Advisor: Prof. [Name]</div>
                     <ul>
-                        <li>[填写工作内容：Conducted research on...]</li>
-                        <li>[填写工作内容：Developed tools for...]</li>
-                    </ul>
-                </div>
-
-                <div class="item-block">
-                    <div class="item-header">
-                        <div class="item-title">Teaching Assistant for [Course Number]</div>
-                        <div class="item-date">Month Year – Month Year</div>
-                    </div>
-                    <div class="item-subtitle">University of Wisconsin-Madison</div>
-                    <ul>
-                        <li>[填写工作内容：Led discussion sections and office hours for...]</li>
+                        <li>Exploring advanced topics in blockchain technology and cryptography.</li>
+                        <li>Continuously expanding knowledge in quantum algorithms and their theoretical limitations.</li>
                     </ul>
                 </div>
             </div>
