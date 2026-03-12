@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Homepage</title>
+    <title>Yuxiang Sun - Homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* 全局样式 */
+        html {
+            scroll-behavior: smooth; /* 点击导航栏时平滑滚动 */
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: #333;
@@ -19,7 +22,7 @@
         a { color: #2a7b9b; text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        /* 顶部导航栏 */
+        /* 顶部导航栏 (固定在顶部) */
         .navbar {
             display: flex;
             justify-content: flex-start;
@@ -28,9 +31,13 @@
             gap: 30px;
             font-size: 1.1rem;
             color: #666;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .navbar a { color: #666; font-weight: 500; }
-        .navbar a.active { color: #333; font-weight: bold; }
+        .navbar a:hover { color: #333; }
 
         /* 主体内容容器 */
         .container {
@@ -38,18 +45,19 @@
             max-width: 1100px;
             margin: 40px auto;
             padding: 0 20px;
-            gap: 50px; /* 左右两栏的间距 */
+            gap: 50px; 
         }
 
         /* 左侧边栏 */
         .sidebar {
-            flex: 0 0 220px; /* 固定宽度 */
+            flex: 0 0 220px; 
         }
         .sidebar img {
             width: 100%;
             height: auto;
             border-radius: 4px;
             margin-bottom: 15px;
+            border: 1px solid #eee; /* 给照片加个细边框 */
         }
         .sidebar h2 {
             font-size: 1.4rem;
@@ -84,18 +92,45 @@
         .main-content {
             flex: 1;
         }
-        .main-content h1 {
+        
+        /* 区块样式 */
+        .content-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px; /* 防止导航栏遮挡标题 */
+        }
+        .content-section h1 {
             font-size: 2rem;
             margin-top: 0;
             margin-bottom: 20px;
             color: #222;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
         }
-        .main-content p {
-            margin-bottom: 15px;
-            font-size: 1.05rem;
+
+        /* 列表项结构 (用于经历和项目) */
+        .item-block {
+            margin-bottom: 25px;
         }
-        
-        /* 突出显示的红色段落（模仿原图的 recruiting 部分） */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+        .item-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .item-date {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .item-subtitle {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
         .highlight-text {
             color: #c00000;
             font-weight: bold;
@@ -107,16 +142,6 @@
             margin: 20px 0;
         }
 
-        /* 研究方向列表 */
-        .research-list {
-            padding-left: 20px;
-        }
-        .research-list li {
-            margin-bottom: 10px;
-            font-size: 1.05rem;
-        }
-
-        /* 响应式设计：在手机上自动变成上下堆叠排列 */
         @media (max-width: 768px) {
             .container { flex-direction: column; }
             .sidebar { flex: 1 1 auto; max-width: 300px; margin: 0 auto; }
@@ -127,45 +152,94 @@
 <body>
 
     <nav class="navbar">
-        <a href="#" class="active">Homepage</a>
-        <a href="#">Publications / Projects</a>
-        <a href="#">Experience</a>
-        <a href="#">CV</a>
+        <a href="#about">Homepage</a>
+        <a href="#projects">Publications / Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="Yuxiang_Sun_Resume.pdf" target="_blank">CV</a>
     </nav>
 
     <div class="container">
         <div class="sidebar">
-            <img src="https://via.placeholder.com/220x220?text=Your+Photo" alt="Profile Photo">
-            <h2>Your Name</h2>
+            <img src="profile.jpg" alt="Yuxiang Sun">
+            <h2>Yuxiang Sun</h2>
             <div class="title">
                 B.S. Student in CS & Math<br>
                 University of Wisconsin-Madison<br>
             </div>
             <ul class="contact-list">
                 <li><i class="fas fa-map-marker-alt"></i> Madison, WI</li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:your.email@wisc.edu">Email</a></li>
-                <li><i class="fab fa-linkedin"></i> <a href="#">LinkedIn</a></li>
-                <li><i class="fab fa-github"></i> <a href="#">GitHub</a></li>
-                <li><i class="fas fa-file-pdf"></i> <a href="#">Resume / CV</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:sun469@wisc.edu">Email</a></li>
+                <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/yu-xiang-sun" target="_blank">LinkedIn</a></li>
+                <li><i class="fab fa-github"></i> <a href="https://github.com/Sethanyx" target="_blank">GitHub</a></li>
+                <li><i class="fas fa-file-pdf"></i> <a href="Yuxiang_Sun_Resume.pdf" target="_blank">Resume / CV</a></li>
             </ul>
         </div>
 
         <div class="main-content">
-            <h1>About</h1>
-            <p>I am an undergraduate student at the <a href="https://www.cs.wisc.edu/">Department of Computer Sciences</a> at <a href="https://www.wisc.edu/">University of Wisconsin-Madison</a>, pursuing a double major in Computer Science and Mathematics. My long-term goal is to pursue a career in the tech industry with strong interests in entrepreneurship and advanced engineering.</p>
             
-            <div class="highlight-box">
-                <p><span class="highlight-text">[Prospective PhD Student]:</span> I am actively seeking PhD programs and research internship opportunities starting in Fall 2027. If our research interests align, please feel free to <a href="mailto:your.email@wisc.edu">email me</a> with my CV attached.</p>
+            <div id="about" class="content-section">
+                <h1>About</h1>
+                <p>I am an undergraduate student at the <a href="https://www.cs.wisc.edu/">Department of Computer Sciences</a> at <a href="https://www.wisc.edu/">University of Wisconsin-Madison</a>, pursuing a double major in Computer Science and Mathematics. My long-term goal is to pursue a career in the tech industry with strong interests in entrepreneurship and advanced engineering.</p>
+                
+                <div class="highlight-box">
+                    <p><span class="highlight-text">[Prospective PhD Student]:</span> I am actively seeking PhD programs and research internship opportunities. If our research interests align, please feel free to <a href="mailto:sun469@wisc.edu">email me</a>.</p>
+                </div>
+
+                <p><strong>Research Interests:</strong> My primary interests lie in Formal Verification, Programming Language Theory, Compilers, and Quantum Computing. I am particularly interested in the intersection of mathematical theory and system implementation.</p>
             </div>
 
-            <p><strong>Research & Engineering Summary:</strong> My primary interests lie in the intersection of theory and system implementation, with a specific focus on ensuring software correctness and building efficient computing infrastructures. I have hands-on experience developing language tools and formalizing mathematical proofs. My current focus areas include:</p>
+            <div id="projects" class="content-section">
+                <h1>Publications & Projects</h1>
+                
+                <div class="item-block">
+                    <div class="item-header">
+                        <div class="item-title">MadLang Interpreter and Compiler</div>
+                    </div>
+                    <div class="item-subtitle">Java | <a href="https://github.com/Sethanyx/[填写具体仓库名]" target="_blank">[GitHub Code]</a></div>
+                    <ul>
+                        <li>[在此填写具体细节，例如：Designed and implemented a programming language interpreter...]</li>
+                        <li>[在此填写具体细节，例如：Handled lexical analysis, AST construction, and environment mapping...]</li>
+                    </ul>
+                </div>
 
-            <ul class="research-list">
-                <li><strong>Programming Language Theory & Compilers:</strong> Developing interpreters and compilers (e.g., MadLang project in Java), handling lexical analysis, AST construction, and environment mapping.</li>
-                <li><strong>Formal Verification:</strong> Applying interactive theorem provers (Coq, Lean) to verify software correctness and explore the theory of computation.</li>
-                <li><strong>Quantum Computing & Cryptography:</strong> [在这里补充一句你在这个方向的具体兴趣或做过的项目摘要]</li>
-                <li><strong>Functional Programming:</strong> Utilizing languages like Haskell for parser combinators and theoretical implementations.</li>
-            </ul>
+                <div class="item-block">
+                    <div class="item-header">
+                        <div class="item-title">Theory of Computation / Formal Verification Project</div>
+                    </div>
+                    <div class="item-subtitle">Coq / Lean / Haskell</div>
+                    <ul>
+                        <li>[在此填写具体细节，例如：Applied interactive theorem provers to verify...]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="experience" class="content-section">
+                <h1>Experience</h1>
+                
+                <div class="item-block">
+                    <div class="item-header">
+                        <div class="item-title">Undergraduate Research Assistant (或者其他职位)</div>
+                        <div class="item-date">Month Year – Present</div>
+                    </div>
+                    <div class="item-subtitle">University of Wisconsin-Madison | Advisor: Prof. [Name]</div>
+                    <ul>
+                        <li>[填写工作内容：Conducted research on...]</li>
+                        <li>[填写工作内容：Developed tools for...]</li>
+                    </ul>
+                </div>
+
+                <div class="item-block">
+                    <div class="item-header">
+                        <div class="item-title">Teaching Assistant for [Course Number]</div>
+                        <div class="item-date">Month Year – Month Year</div>
+                    </div>
+                    <div class="item-subtitle">University of Wisconsin-Madison</div>
+                    <ul>
+                        <li>[填写工作内容：Led discussion sections and office hours for...]</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
 
