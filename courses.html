@@ -6,7 +6,6 @@
     <title>Courses - Yuxiang Sun</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 直接粘贴与 index.html 完全相同的 <style> 内容 */
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; margin: 0; padding: 0; background-color: #fff; }
         a { color: #2a7b9b; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -27,6 +26,9 @@
         .item-block { margin-bottom: 25px; }
         .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
         .item-title { font-weight: bold; font-size: 1.1rem; }
+        /* 针对课程标题旁边链接的微调样式 */
+        .item-title a.repo-link { font-size: 0.85rem; font-weight: normal; margin-left: 10px; color: #666; }
+        .item-title a.repo-link:hover { color: #2a7b9b; }
         .item-date { color: #666; font-size: 0.95rem; }
         @media (max-width: 768px) {
             .container { flex-direction: column; }
@@ -38,11 +40,11 @@
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="active">Homepage</a>
+        <a href="index.html">Homepage</a>
         <a href="projects.html">Projects</a>
         <a href="publications.html">Publications</a>
         <a href="experience.html">Experience</a>
-        <a href="courses.html">Courses</a>
+        <a href="courses.html" class="active">Courses</a>
         <a href="Yuxiang_Sun_Resume.pdf" target="_blank">CV</a>
     </nav>
 
@@ -69,7 +71,27 @@
                 
                 <div class="item-block">
                     <div class="item-header">
-                        <div class="item-title">CS 538</div>
+                        <div class="item-title">
+                            CS 536
+                            <a href="https://github.com/Sethanyx/CS536" target="_blank" class="repo-link">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                        </div>
+                        <div class="item-date">Spring 2026</div>
+                    </div>
+                    <ul>
+                        <li>填写你在这门课学到的内容或完成的期末大作业。</li>
+                    </ul>
+                </div>
+
+                <div class="item-block">
+                    <div class="item-header">
+                        <div class="item-title">
+                            CS 538
+                            <a href="https://github.com/Sethanyx/CS-538" target="_blank" class="repo-link">
+                                <i class="fab fa-github"></i> Repository
+                            </a>
+                        </div>
                         <div class="item-date">Fall 2025</div>
                     </div>
                     <ul>
